@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<ctype.h>
+
+int peek()
+{
+        int c=getchar();
+        int n=c;
+        ungetc(c,stdin);
+        return n;
+}
+
+float read()
+{
+        int c,num=0,k=0,sum=0x0;
+        float avg=0;
+        while((c=getchar())!=EOF)
+        {
+                if(isxdigit(c))
+                {
+                        if(c>='0' && c<='9')
+                        {
+                                c=c-'0';
+                        }
+                        if(c>='a' && c<='f')
+                        {
+                                c=c-'a' +10;
+                        }
+                        if(c>='A' && c<='F')
+                        {
+                                c=c-'A'+10;
+                        }
+                        sum+=c;
+                        k++;
+                }
+
+
+        }
+        printf("%d\n",sum);
+        avg=(float)((float)sum/(float)k);
+        return avg;
+}
+int main()
+{
+        printf("%f",read());
+        return 0;
+}
